@@ -2,6 +2,8 @@ const express = require("express");
 
 var app = express();
 const PORT = process.env.PORT || 3000;
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get("/", function (req, res) {
     res.send("Welcome to the restaurant!");
@@ -35,3 +37,11 @@ var waitList = [];
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 });
+
+
+app.post("/resform", function(req, res) {
+    reservation.push(res)
+    console.log(res);
+    res.json(reservation);
+  });
+
